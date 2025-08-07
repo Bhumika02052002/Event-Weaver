@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corporate Parties - Event Weaver</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #000; /* Black background */
+      color: #ffd700; /* Golden text */
+    }
+    .product-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: #1a1a1a; /* Dark gray background for cards */
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3); /* Golden shadow */
+    }
+    .product-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .product-card .card-body {
+      background: linear-gradient(45deg, #1a1a1a, #000); /* Dark gradient */
+      color: #ffd700; /* Golden text */
+      text-align: center;
+    }
+    .product-card .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .btn-light {
+      background-color: #ffd700; /* Golden button */
+      color: #000; /* Black text */
+      border: none;
+    }
+    .btn-light:hover {
+      background-color: #e6b800; /* Darker golden on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Event Weaver</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Products Content -->
+  <div class="container my-5">
+    <h1 class="text-center mb-5">Corporate Parties</h1>
+    <div class="row g-4">
+      <!-- Venue Booking -->
+      <div class="col-md-4">
+        <div class="product-card card">
+          <img src="images/venue_booking.jpg" class="card-img-top" alt="Venue Booking">
+          <div class="card-body">
+            <h5 class="card-title">Venue Booking</h5>
+            <p class="card-text">Book premium venues for your corporate parties.</p>
+            <p class="card-text"><strong>Starting at $1000/day</strong></p>
+            <a href="cart.html" class="btn btn-light">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Catering Services -->
+      <div class="col-md-4">
+        <div class="product-card card">
+          <img src="images/Catering.jpg" class="card-img-top" alt="Catering Services">
+          <div class="card-body">
+            <h5 class="card-title">Catering Services</h5>
+            <p class="card-text">Delicious catering options for your corporate party.</p>
+            <p class="card-text"><strong>Starting at $20/person</strong></p>
+            <a href="cart.html" class="btn btn-light">Order Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Entertainment -->
+      <div class="col-md-4">
+        <div class="product-card card">
+          <img src="images/dj_services.webp" class="card-img-top" alt="Entertainment">
+          <div class="card-body">
+            <h5 class="card-title">Entertainment</h5>
+            <p class="card-text">Live music, DJs, and performers for your party.</p>
+            <p class="card-text"><strong>Starting at $500</strong></p>
+            <a href="cart.html" class="btn btn-light">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Decorations -->
+      <div class="col-md-4">
+        <div class="product-card card">
+          <img src="images/party_decor.jpg" class="card-img-top" alt="Decorations">
+          <div class="card-body">
+            <h5 class="card-title">Decorations</h5>
+            <p class="card-text">Themed decorations to elevate your corporate party.</p>
+            <p class="card-text"><strong>Starting at $300</strong></p>
+            <a href="cart.html" class="btn btn-light">Order Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Photography -->
+      <div class="col-md-4">
+        <div class="product-card card">
+          <img src="images/Photographer.jpg" class="card-img-top" alt="Photography">
+          <div class="card-body">
+            <h5 class="card-title">Photography</h5>
+            <p class="card-text">Professional photography to capture your event.</p>
+            <p class="card-text"><strong>Starting at $400</strong></p>
+            <a href="cart.html" class="btn btn-light">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Event Planning -->
+      <div class="col-md-4">
+        <div class="product-card card">
+          <img src="images/event_planning.jpg" class="card-img-top" alt="Event Planning">
+          <div class="card-body">
+            <h5 class="card-title">Event Planning</h5>
+            <p class="card-text">Full-service planning for seamless corporate parties.</p>
+            <p class="card-text"><strong>Starting at $1500</strong></p>
+            <a href="cart.html" class="btn btn-light">Plan Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 Event Weaver. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Add the Cart Script Here -->
+  <script>
+    // Function to add product to cart
+    function addToCart(productName, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let product = { name: productName, price: price };
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${productName} added to cart!`);
+    }
+
+    // Function to display cart items and calculate total
+    function displayCart() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let cartItems = document.getElementById('cart-items');
+      let totalItems = document.getElementById('total-items');
+      let totalAmount = document.getElementById('total-amount');
+      let total = 0;
+
+      cartItems.innerHTML = '';
+      cart.forEach((item, index) => {
+        let li = document.createElement('li');
+        li.textContent = `${item.name} - $${item.price}`;
+        cartItems.appendChild(li);
+        total += item.price;
+      });
+
+      totalItems.textContent = cart.length;
+      totalAmount.textContent = total.toFixed(2);
+    }
+
+    // Function to clear cart
+    function clearCart() {
+      localStorage.removeItem('cart');
+      displayCart();
+    }
+
+    // Display cart when the page loads
+    window.onload = displayCart;
+  </script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Weaver - Categories</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #000; /* Black background */
+      color: #ffd700; /* Golden text */
+    }
+    .category-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: #1a1a1a; /* Dark gray background for cards */
+    }
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3); /* Golden shadow */
+    }
+    .category-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .category-card .card-body {
+      background: linear-gradient(45deg, #1a1a1a, #000); /* Dark gradient */
+      color: #ffd700; /* Golden text */
+      text-align: center;
+    }
+    .category-card .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .navbar {
+      background: linear-gradient(45deg, #000, #1a1a1a); /* Black to dark gray gradient */
+    }
+    .navbar-brand {
+      color: #ffd700 !important; /* Golden text */
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+      color: #ffd700 !important; /* Golden text */
+    }
+    .navbar-nav .nav-link:hover {
+      color: #fff !important; /* White text on hover */
+    }
+    .footer {
+      background: linear-gradient(45deg, #000, #1a1a1a); /* Black to dark gray gradient */
+      color: #ffd700; /* Golden text */
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .carousel-item img {
+      height: 500px;
+      object-fit: cover;
+    }
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .carousel-caption h5 {
+      color: #ffd700; /* Golden text */
+    }
+    .carousel-caption p {
+      color: #fff; /* White text */
+    }
+    .info-section {
+      background: linear-gradient(45deg, #000, #1a1a1a); /* Black to dark gray gradient */
+      color: #ffd700; /* Golden text */
+      padding: 50px 0;
+      text-align: center;
+    }
+    .info-section h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .info-section p {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: #fff; /* White text */
+    }
+    .btn-light {
+      background-color: #ffd700; /* Golden button */
+      color: #000; /* Black text */
+      border: none;
+    }
+    .btn-light:hover {
+      background-color: #e6b800; /* Darker golden on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Event Weaver</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="order-tracking.html" onclick="showCustomerAlert()">My Order</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Shopkeeper_Dashboard.html" onclick="showShopkeeperAlert()">Shopkeeper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Cart.html"onclick="showCustomerAlert()">Cart</a>
+          </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carousel Slider -->
+  <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="images/Dream_event.jpg" class="d-block w-100" alt="Event 1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Plan Your Dream Event</h5>
+          <p>From birthdays to weddings, we've got you covered.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="images/Ex_Decoration.jpg" class="d-block w-100" alt="Event 2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Exclusive Decorations</h5>
+          <p>Make your event unforgettable with our premium decorations.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="images/Book_event.jpg" class="d-block w-100" alt="Event 3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Book Event Halls</h5>
+          <p>Find the perfect venue for your event.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Informative Section -->
+  <div class="info-section">
+    <div class="container">
+      <h2>Welcome to Event Weaver</h2>
+      <p>Your one-stop solution for planning and organizing events. From decorations to venue bookings, we provide everything you need to make your event memorable.</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container my-5">
+    <h1 class="text-center mb-5">Explore Event Categories</h1>
+    <div class="row g-4">
+      <!-- Birthday -->
+      <div class="col-md-4">
+        <div class="category-card card">
+          <img src="images/HBD.jpg" class="card-img-top" alt="Birthday">
+          <div class="card-body">
+            <h5 class="card-title">Birthday</h5>
+            <p class="card-text">Celebrate your special day with our exclusive decorations and services.</p>
+            <a href="birthday.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Wedding -->
+      <div class="col-md-4">
+        <div class="category-card card">
+          <img src="images/wd1.jpg" class="card-img-top" alt="Wedding">
+          <div class="card-body">
+            <h5 class="card-title">Wedding</h5>
+            <p class="card-text">Make your dream wedding come true with our premium offerings.</p>
+            <a href="wedding.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Diwali -->
+      <div class="col-md-4">
+        <div class="category-card card">
+          <img src="images/Happy_diwali.jpg" class="card-img-top" alt="Diwali">
+          <div class="card-body">
+            <h5 class="card-title">Diwali</h5>
+            <p class="card-text">Light up your Diwali with our festive decorations and products.</p>
+            <a href="diwali.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Holi -->
+      <div class="col-md-4">
+        <div class="category-card card">
+          <img src="images/Holi.jpg" class="card-img-top" alt="Holi">
+          <div class="card-body">
+            <h5 class="card-title">Holi</h5>
+            <p class="card-text">Celebrate the festival of colors with our vibrant products.</p>
+            <a href="holi.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Corporate Events -->
+      <div class="col-md-4">
+        <div class="category-card card">
+          <img src="images/Co_event.jpg" class="card-img-top" alt="Corporate Events">
+          <div class="card-body">
+            <h5 class="card-title">Corporate Events</h5>
+            <p class="card-text">Host professional events with our top-notch services.</p>
+            <a href="corporate.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Baby Shower -->
+      <div class="col-md-4">
+        <div class="category-card card">
+          <img src="images/Baby_shower.jpg" class="card-img-top" alt="Baby Shower">
+          <div class="card-body">
+            <h5 class="card-title">Baby Shower</h5>
+            <p class="card-text">Celebrate the arrival of your little one with our adorable decorations.</p>
+            <a href="baby_shower.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Event Weaver. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  
+    <script>
+  // Simple alert functions
+  function showShopkeeperAlert() {
+    alert("Please login as a shopkeeper to access this page.\nRedirecting to login page...");
+    window.location.href = "shopkeeper-login.html";
+  }
+
+  function showCustomerAlert() {
+    alert("Please login as a customer to access this page.\nRedirecting to login page...");
+    window.location.href = "customer_login.html";
+  }
+
+  // Set up event listeners when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    // Shopkeeper link
+    const shopkeeperLink = document.querySelector('a[href="Shopkeeper_Dashboard.html"]');
+    if (shopkeeperLink) {
+      shopkeeperLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showShopkeeperAlert();
+      });
+    }
+
+    // My Order link
+    const orderLink = document.querySelector('a[href="order-tracking.html"]');
+    if (orderLink) {
+      orderLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showCustomerAlert();
+      });
+    }
+
+    // Cart link (if you add it back)
+    const cartLink = document.querySelector('a[href="#"].nav-link:last-child');
+    if (cartLink) {
+      cartLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showCustomerAlert();
+      });
+    }
+  });
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Sub-Categories - Event Weaver</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #000; /* Black background */
+      color: #ffd700; /* Golden text */
+    }
+    .sub-category-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: #1a1a1a; /* Dark gray background for cards */
+    }
+    .sub-category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3); /* Golden shadow */
+    }
+    .sub-category-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .sub-category-card .card-body {
+      background: linear-gradient(45deg, #1a1a1a, #000); /* Dark gradient */
+      color: #ffd700; /* Golden text */
+      text-align: center;
+    }
+    .sub-category-card .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .btn-light {
+      background-color: #ffd700; /* Golden button */
+      color: #000; /* Black text */
+      border: none;
+    }
+    .btn-light:hover {
+      background-color: #e6b800; /* Darker golden on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Event Weaver</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sub-Category Content -->
+  <div class="container my-5">
+    <h1 class="text-center mb-5">Birthday Sub-Categories</h1>
+    <div class="row g-4">
+      <!-- Decoration -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/decoration.jpg" class="card-img-top" alt="Decoration">
+          <div class="card-body">
+            <h5 class="card-title">Decoration</h5>
+            <p class="card-text">Make your birthday celebration vibrant with our exclusive decorations.</p>
+            <a href="decoration.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Catering -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/Catering.jpg" class="card-img-top" alt="Catering">
+          <div class="card-body">
+            <h5 class="card-title">Catering</h5>
+            <p class="card-text">Delicious food and beverages for your birthday party.</p>
+            <a href="catering.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Bakery -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/bakery.jpg" class="card-img-top" alt="Bakery">
+          <div class="card-body">
+            <h5 class="card-title">Bakery</h5>
+            <p class="card-text">Customized cakes and desserts for your special day.</p>
+            <a href="bakery.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Clothes -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/clothes.jpg" class="card-img-top" alt="Clothes">
+          <div class="card-body">
+            <h5 class="card-title">Clothes</h5>
+            <p class="card-text">Stylish outfits for the birthday boy/girl.</p>
+            <a href="clothes.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Gifts -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/gift.webp" class="card-img-top" alt="Gifts">
+          <div class="card-body">
+            <h5 class="card-title">Gifts</h5>
+            <p class="card-text">Unique and memorable gifts for your loved ones.</p>
+            <a href="gifts.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Photographer -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/Photographer.jpg" class="card-img-top" alt="Photographer">
+          <div class="card-body">
+            <h5 class="card-title">Photographer</h5>
+            <p class="card-text">Capture your special moments with our professional photographers.</p>
+            <a href="photographer.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 Event Weaver. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Waver - Customer Login</title>
+    <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background-color: #121212;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #D4AF37;
+        }
+        
+        .logo h1 span {
+            color: #f5f5f5;
+        }
+        
+        .logo .decoration {
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #D4AF37, transparent);
+            margin-top: 5px;
+        }
+        
+        .login-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+            background: url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            position: relative;
+        }
+        
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .login-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 1px solid #D4AF37;
+            border-radius: 8px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #D4AF37;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #D4AF37;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: #2a2a2a;
+            color: #f5f5f5;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus {
+            border-color: #D4AF37;
+            outline: none;
+        }
+        
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .form-options label {
+            color: #f5f5f5;
+            font-weight: 400;
+        }
+        
+        .forgot-password {
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .gold-btn {
+            background-color: #D4AF37;
+            color: #121212;
+        }
+        
+        .gold-btn:hover {
+            background-color: #C9A227;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .form-footer p {
+            color: #f5f5f5;
+        }
+        
+        .form-footer a {
+            color: #D4AF37;
+            text-decoration: none;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            background-color: #121212;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .login-box {
+                padding: 30px 20px;
+            }
+        }
+        .navbar {
+      background: linear-gradient(45deg, #000, #1a1a1a); /* Black to dark gray gradient */
+    }
+    .navbar-brand {
+      color: #ffd700 !important; /* Golden text */
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+      color: #ffd700 !important; /* Golden text */
+    }
+    .navbar-nav .nav-link:hover {
+      color: #fff !important; /* White text on hover */
+    }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- Navbar -->
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Event Weaver</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="order-tracking.html" onclick="showCustomerAlert()">My Order</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Shopkeeper_Dashboard.html" onclick="showShopkeeperAlert()">Shopkeeper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"onclick="showCustomerAlert()">Cart</a>
+          </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </div>
+    </div>
+  </nav>
+  </header>
+    
+    <main class="login-container">
+        <div class="login-box">
+            <h2>Customer Login</h2>
+            <form id="customer-login-form" method="POST" action="customer_login.php">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-options">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn gold-btn">Login</button>
+            </form>
+            <div class="form-footer">
+                <p>Don't have an account? <a href="customer-register.html">Register here</a></p>
+                <p>Are you a shopkeeper? <a href="shopkeeper-login.html">Shopkeeper login</a></p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Event Waver. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // document.getElementById('customer-login-form').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+            // Add your login logic here
+            // alert('Login functionality will be implemented here');
+            // window.location.href = 'customer-dashboard.html';
+        // });
+    </script>
+     <!-- Bootstrap JS -->
+  
+     <script>
+        // Simple alert functions
+        function showShopkeeperAlert() {
+          alert("Please login as a shopkeeper to access this page.\nRedirecting to login page...");
+          window.location.href = "shopkeeper-login.html";
+        }
+      
+        function showCustomerAlert() {
+          alert("Please login as a customer to access this page.\nRedirecting to login page...");
+          window.location.href = "customer_login.html";
+        }
+      
+        // Set up event listeners when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+          // Shopkeeper link
+          const shopkeeperLink = document.querySelector('a[href="Shopkeeper_Dashboard.html"]');
+          if (shopkeeperLink) {
+            shopkeeperLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              showShopkeeperAlert();
+            });
+          }
+      
+          // My Order link
+          const orderLink = document.querySelector('a[href="order-tracking.html"]');
+          if (orderLink) {
+            orderLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              showCustomerAlert();
+            });
+          }
+      
+          // Cart link (if you add it back)
+          const cartLink = document.querySelector('a[href="#"].nav-link:last-child');
+          if (cartLink) {
+            cartLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              showCustomerAlert();
+            });
+          }
+        });
+      </script>
+       
+</body>
+</html>

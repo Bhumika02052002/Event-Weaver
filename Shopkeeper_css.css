@@ -1,0 +1,224 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a; /* Dark background */
+    color: #e0e0e0; /* Light text for contrast */
+}
+
+header {
+    background-color: #121212; /* Slightly darker than body */
+    color: #ffd700; /* Golden text */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #ffd700; /* Golden links */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #c0a040; /* Slightly darker gold on hover */
+}
+
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #242424; /* Dark section background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: #ffd700; /* Golden headings */
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #e0e0e0; /* Light text for labels */
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #444; /* Dark border */
+    border-radius: 5px;
+    background-color: #333; /* Dark input background */
+    color: #e0e0e0; /* Light text */
+    font-size: 1rem;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+    border-color: #ffd700; /* Golden border on focus */
+    outline: none;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #ffd700; /* Golden button */
+    color: #121212; /* Dark text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #c0a040; /* Darker gold on hover */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #444; /* Dark borders */
+    text-align: left;
+}
+
+table th {
+    background-color: #ffd700; /* Golden header */
+    color: #121212; /* Dark text */
+    font-weight: bold;
+}
+
+table td {
+    background-color: #333; /* Dark table cells */
+    color: #e0e0e0; /* Light text */
+}
+
+table td button {
+    padding: 5px 10px;
+    background-color: #ffd700; /* Golden buttons */
+    color: #121212; /* Dark text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+table td button:hover {
+    background-color: #c0a040; /* Darker gold on hover */
+}
+
+/* Informative Slider */
+/* Shopkeeper_css.css */
+.slider {
+    position: relative;
+    width: 80%; /* Medium size */
+    max-width: 600px; /* Adjust as needed */
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.slider img {
+    width: 100%;
+    display: none;
+    border-radius: 10px;
+}
+
+.slider img.active {
+    display: block;
+}
+
+.slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 215, 0, 0.7); /* Golden buttons */
+    color: #121212;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.slider button:hover {
+    background-color: rgba(255, 215, 0, 0.9); /* Brighter gold on hover */
+}
+
+.slider .prev {
+    left: 10px;
+}
+
+.slider .next {
+    right: 10px;
+}
+
+/* Dialog Box */
+.dialog {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #242424;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    color: #e0e0e0;
+    width: 300px;
+    text-align: center;
+}
+
+.dialog button {
+    padding: 10px 20px;
+    background-color: #ffd700;
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.dialog button:hover {
+    background-color: #c0a040;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}

@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopkeeper Dashboard - Event Weaver</title>
+    <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+    <link rel="stylesheet" href="Shopkeeper_css.css">
+    <style>
+        /* Add your custom CSS here */
+        .slider img {
+            display: none;
+        }
+        .slider img.active {
+            display: block;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shopkeeper Dashboard</h1>
+        <br><br>
+         <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Event Weaver</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="order-tracking.html" onclick="showCustomerAlert()">My Order</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Shopkeeper_Dashboard.html">Shopkeeper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"onclick="showCustomerAlert()">Cart</a>
+          </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </div>
+    </div>
+  </nav>
+    </header>
+    <br><br>
+
+    <!-- Informative Slider -->
+    <div class="slider">
+        <!-- Fixed image paths -->
+<img src="images/dec1.jpg" alt="Event Decoration" class="active">
+<img src="images/catering.jpg" alt="Catering Services">
+<img src="images/bt1.jpg" alt="Beauty Booking">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
+
+    <!-- Add Product Section -->
+    <section id="add-product">
+        <h2>Add New Product</h2>
+        <form id="product-form" action="add_product.php" method="POST" enctype="multipart/form-data">
+            <label for="product-name">Product Name:</label>
+            <input type="text" id="product-name" name="name" required>
+            <input type="hidden" id="product_id" name="product_id">
+
+            <label for="product-description">Product Description:</label>
+            <textarea id="product-description" name="description" required></textarea>
+
+            <label for="product-price">Price:</label>
+            <input type="number" id="product-price" name="price" step="0.01" required>
+
+            <label for="product-image">Product Image:</label>
+            <input type="file" id="product-image" name="image_path" accept="image/*" required>
+            <div class="form-group">
+                <label for="business-type">Business Type*</label>
+                <div class="form-group">
+                    <label for="main-category">Main Category*</label>
+                    <select id="main-category" name="main_category" required onchange="updateSubcategories()">
+                      <option value="">Select Main Category</option>
+                      <option value="birthday">Birthday</option>
+                      <option value="wedding">Wedding</option>
+                      <option value="diwali">Diwali</option>
+                      <option value="holi">Holi</option>
+                      <option value="corporate">Corporate Event</option>
+                      <option value="babyshower">Baby Shower</option>
+                    </select>
+                  </div>                
+                  <div class="form-group" id="subcategory-group" style="display:none;">
+                    <label for="sub-category">Sub Category*</label>
+                    <select id="sub-category" name="sub_category" required>
+                      <option value="">Select Sub Category</option>
+                      <!-- Subcategories will be populated by JavaScript -->
+                    </select>
+                  </div>
+                  
+                  <script>
+                    // Define subcategories for each main category
+                    const subcategories = {
+                      birthday: [
+                        "Decoration",
+                        "Catering",
+                        "Bakery",
+                        "Clothing",
+                        "Gifts",
+                        "Photography"
+                      ],
+                      wedding: [
+                        "Decoration",
+                        "Catering",
+                        "Venue",
+                        "Clothing",
+                        "Photography",
+                        "Entertainment"
+                      ],
+                      diwali: [
+                        "Decoration",
+                        "Sweets",
+                        "Gifts",
+                        "Clothing",
+                        "Fireworks"
+                      ],
+                      holi: [
+                        "Colors",
+                        "Decoration",
+                        "Sweets",
+                        "Gifts",
+                        "Clothing"
+                      ],
+                      corporate: [
+                        "Venue",
+                        "Catering",
+                        "Equipment",
+                        "Entertainment",
+                        "Photography"
+                      ],
+                      babyshower: [
+                        "Decoration",
+                        "Catering",
+                        "Gifts",
+                        "Photography",
+                        "Entertainment"
+                      ]
+                    };
+                  
+                    function updateSubcategories() {
+                      const mainCategory = document.getElementById('main-category').value;
+                      const subCategorySelect = document.getElementById('sub-category');
+                      const subCategoryGroup = document.getElementById('subcategory-group');
+                      
+                      // Clear previous options
+                      subCategorySelect.innerHTML = '<option value="">Select Sub Category</option>';
+                      
+                      if (mainCategory) {
+                        // Show subcategory group
+                        subCategoryGroup.style.display = 'block';
+                        
+                        // Add new options
+                        subcategories[mainCategory].forEach(subcat => {
+                          const option = document.createElement('option');
+                          option.value = subcat.toLowerCase().replace(/ /g, '-');
+                          option.textContent = subcat;
+                          subCategorySelect.appendChild(option);
+                        });
+                      } else {
+                        // Hide subcategory group if no main category selected
+                        subCategoryGroup.style.display = 'none';
+                      }
+                    }
+                  </script>
+            </div>
+        </div>
+
+            <button type="submit">Add Product</button>
+        </form>
+    </section>
+
+    <!-- Manage Products Section -->
+    <section id="manage-products">
+        <h2>Manage Products</h2>
+        <table id="product-table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Product rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Dialog Box -->
+    <div class="overlay"></div>
+    <div class="dialog">
+        <p>Are you sure you want to delete this product?</p>
+        <button onclick="confirmDelete()">Yes</button>
+        <button onclick="closeDialog()">No</button>
+    </div>
+
+  
+    <script>
+      // --- SLIDER FUNCTIONALITY ---
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.slider img');
+      const totalSlides = slides.length;
+  
+      function showSlide(index) {
+          slides.forEach((slide, i) => {
+              slide.classList.toggle('active', i === index);
+          });
+      }
+  
+      function nextSlide() {
+          currentSlide = (currentSlide + 1) % totalSlides;
+          showSlide(currentSlide);
+      }
+  
+      function prevSlide() {
+          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+          showSlide(currentSlide);
+      }
+  
+      let autoSlideInterval = setInterval(nextSlide, 3000);
+  
+      const sliderContainer = document.querySelector('.slider');
+      sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+      sliderContainer.addEventListener('mouseleave', () => {
+          autoSlideInterval = setInterval(nextSlide, 3000);
+      });
+  
+      document.querySelector('.slider .next').addEventListener('click', nextSlide);
+      document.querySelector('.slider .prev').addEventListener('click', prevSlide);
+  
+  
+      // --- SHOW LOGIN ALERTS ---
+      function showShopkeeperAlert() {
+          alert("Please login as a shopkeeper to access this page.\nRedirecting to login page...");
+          window.location.href = "shopkeeper-login.html";
+      }
+  
+      function showCustomerAlert() {
+          alert("Please login as a customer to access this page.\nRedirecting to login page...");
+          window.location.href = "customer_login.html";
+      }
+  
+      document.addEventListener('DOMContentLoaded', function () {
+          const orderLink = document.querySelector('a[href="order-tracking.html"]');
+          const cartLink = document.querySelector('a[href="#"].nav-link:last-child');
+  
+          if (orderLink) {
+              orderLink.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  showCustomerAlert();
+              });
+          }
+  
+          if (cartLink) {
+              cartLink.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  showCustomerAlert();
+              });
+          }
+  
+          // --- FETCH PRODUCTS FROM BACKEND ---
+          fetch("fetch_shopkeeper_products.php")
+              .then(res => res.json())
+              .then(data => {
+                  const tableBody = document.querySelector("#product-table tbody");
+                  tableBody.innerHTML = "";
+  
+                  if (data.length === 0) {
+                      tableBody.innerHTML = "<tr><td colspan='5'>No products yet.</td></tr>";
+                      return;
+                  }
+  
+                  data.forEach(product => {
+                      const row = document.createElement("tr");
+                      row.innerHTML = `
+                          <td>${product.name}</td>
+                          <td>${product.description}</td>
+                          <td>₹${product.price}</td>
+                          <td>${product.main_category} > ${product.sub_category}</td>
+                          <td>
+                              <button onclick="editProduct(${product.id}, '${product.name}', \`${product.description}\`, '${product.price}', '${product.main_category}', '${product.sub_category}')">Edit</button>
+                              <button onclick="deleteProduct(${product.id})">Delete</button>
+                          </td>
+                      `;
+                      tableBody.appendChild(row);
+                  });
+              });
+      });
+  
+      // --- ADD / UPDATE PRODUCT ---
+      document.getElementById('product-form').addEventListener('submit', function (event) {
+          event.preventDefault();
+  
+          const formData = new FormData(this);
+          const isEdit = document.getElementById("product_id").value !== "";
+  
+          const actionURL = isEdit ? 'edit_product.php' : 'add_product.php';
+  
+          fetch(actionURL, {
+              method: 'POST',
+              body: formData
+          })
+              .then(response => response.text())
+              .then(data => {
+                  alert(isEdit ? 'Product updated successfully!' : 'Product added successfully!');
+                  location.reload();
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+              });
+      });
+  
+      // --- EDIT PRODUCT ---
+      function editProduct(id, name, description, price, mainCat, subCat) {
+          document.getElementById("product_id").value = id;
+          document.querySelector("input[name='name']").value = name;
+          document.querySelector("textarea[name='description']").value = description;
+          document.querySelector("input[name='price']").value = price;
+          document.querySelector("select[name='main_category']").value = mainCat;
+          updateSubcategories(); // Load subcategories first
+          setTimeout(() => {
+              document.querySelector("select[name='sub_category']").value = subCat;
+          }, 100); // Delay to ensure subcategories are loaded
+  
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+  
+      // --- DELETE PRODUCT ---
+      function deleteProduct(id) {
+          if (confirm("Are you sure you want to delete this product?")) {
+              fetch("delete_product.php", {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                  },
+                  body: "id=" + id
+              })
+                  .then(res => res.json())
+                  .then(data => {
+                      if (data.status === "success") {
+                          alert("Product deleted!");
+                          location.reload();
+                      } else {
+                          alert("Failed to delete product");
+                      }
+                  });
+          }
+      }
+  </script>
+  
+  
+  
+          
+        
+       
+</body>
+</html>

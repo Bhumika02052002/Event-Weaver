@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Waver - Shopkeeper Registration</title>
+     <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===== Global Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #D4AF37;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: #f5f5f5;
+            text-decoration: underline;
+        }
+        
+        /* ===== Header Styles ===== */
+        .header {
+            background-color: #121212;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #D4AF37;
+            letter-spacing: 1px;
+        }
+        
+        .logo h1 span {
+            color: #f5f5f5;
+        }
+        
+        .logo .decoration {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #D4AF37, transparent);
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+        
+        /* ===== Main Content Styles ===== */
+        .register-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+            background: url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            position: relative;
+        }
+        
+        .register-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .register-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 10px;
+            padding: 40px;
+            width: 95%;
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+        
+        .register-box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #D4AF37;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== Form Styles ===== */
+        .form-section-title {
+            color: #D4AF37;
+            margin: 25px 0 15px 0;
+            border-bottom: 1px solid #D4AF37;
+            padding-bottom: 5px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #D4AF37;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            background-color: #2a2a2a;
+            color: #f5f5f5;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #D4AF37;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .form-group small {
+            display: block;
+            color: #aaa;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* ===== Button Styles ===== */
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gold-btn {
+            background-color: #D4AF37;
+            color: #121212;
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+        }
+        
+        .gold-btn:hover {
+            background-color: #C9A227;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(212, 175, 55, 0.4);
+        }
+        
+        .gold-btn:active {
+            transform: translateY(0);
+        }
+        
+        .gold-btn i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        /* ===== Checkbox Styles ===== */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+            accent-color: #D4AF37;
+        }
+        
+        .checkbox-group label {
+            margin-bottom: 0;
+            font-weight: 400;
+            color: #f5f5f5;
+        }
+        
+        /* ===== File Input Styles ===== */
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-input-label {
+            display: block;
+            padding: 12px;
+            background-color: #2a2a2a;
+            border: 1px dashed #D4AF37;
+            border-radius: 6px;
+            text-align: center;
+            color: #D4AF37;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .file-input-label:hover {
+            background-color: #333;
+        }
+        
+        /* ===== Footer Styles ===== */
+        .footer {
+            background-color: #121212;
+            padding: 25px 0;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .footer p {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .form-footer p {
+            color: #f5f5f5;
+            margin-bottom: 10px;
+        }
+
+        /* .navbar-nav{
+            display: flex;
+            justify-content: space-between;
+            margin-top:10px ;
+            
+        } */
+
+        .navbar {
+      background: linear-gradient(45deg, #000, #1a1a1a); /* Black to dark gray gradient */
+    }
+    .navbar-brand {
+      color: #ffd700 !important; /* Golden text */
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+      color: #ffd700 !important; /* Golden text */
+    }
+    .navbar-nav .nav-link:hover {
+      color: #fff !important; /* White text on hover */
+    }
+        
+        /* ===== Responsive Styles ===== */
+        @media (max-width: 768px) {
+            .register-box {
+                padding: 30px 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .register-box h2 {
+                font-size: 24px;
+            }
+        }
+        
+        /* ===== Scrollbar Styles ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #2a2a2a;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C9A227;
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- <div class="container">
+            <div class="logo">
+                <h1>Event<span>Waver</span></h1>
+                <div class="decoration"></div>
+            </div>
+        </div>
+        <!-- Navbar -->
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Event Weaver</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="order-tracking.html" onclick="showCustomerAlert()">My Order</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Shopkeeper_Dashboard.html" onclick="showShopkeeperAlert()">Shopkeeper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"onclick="showCustomerAlert()">Cart</a>
+          </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </div>
+    </div> -->
+  <!-- </nav>  -->
+     <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Event Weaver</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="order-tracking.html" onclick="showCustomerAlert()">My Order</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Shopkeeper_Dashboard.html" onclick="showShopkeeperAlert()">Shopkeeper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"onclick="showCustomerAlert()">Cart</a>
+          </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </div>
+    </div>
+  </nav>
+    </header>
+    
+    <main class="register-container">
+        <div class="register-box">
+            <h2>Shopkeeper Registration</h2>
+            <form id="shopkeeper-register-form" action="shopkeeper_register.php" method="POST" enctype="multipart/form-data">
+                <h3 class="form-section-title">Business Information</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="business-name">Business Name*</label>
+                        <input type="text" id="business-name" name="business_name" required placeholder="Enter your business name">
+                    </div>
+                    <div class="form-group">
+                        <label for="business-type">Business Type*</label>
+                        <div class="form-group">
+    
+                            <select id="main-category" name="main_category" required onchange="updateSubcategories()">
+                              <option value="">Select Main Category</option>
+                              <option value="birthday">Birthday</option>
+                              <option value="wedding">Wedding</option>
+                              <option value="diwali">Diwali</option>
+                              <option value="holi">Holi</option>
+                              <option value="corporate">Corporate Event</option>
+                              <option value="babyshower">Baby Shower</option>
+                            </select>
+                          </div>
+                          
+                          <div class="form-group" id="subcategory-group" style="display:none;">
+                            <label for="sub-category">Sub Category*</label>
+                            <select id="sub-category" name="sub_category" required>
+                              <option value="">Select Sub Category</option>
+                              <!-- Subcategories will be populated by JavaScript -->
+                            </select>
+                          </div>
+                          
+                          <script>
+                            // Define subcategories for each main category
+                            const subcategories = {
+                              birthday: [
+                                "Decoration",
+                                "Catering",
+                                "Bakery",
+                                "Clothing",
+                                "Gifts",
+                                "Photography"
+                              ],
+                              wedding: [
+                                "Decoration",
+                                "Catering",
+                                "Venue",
+                                "Clothing",
+                                "Photography",
+                                "Entertainment"
+                              ],
+                              diwali: [
+                                "Decoration",
+                                "Sweets",
+                                "Gifts",
+                                "Clothing",
+                                "Fireworks"
+                              ],
+                              holi: [
+                                "Colors",
+                                "Decoration",
+                                "Sweets",
+                                "Gifts",
+                                "Clothing"
+                              ],
+                              corporate: [
+                                "Venue",
+                                "Catering",
+                                "Equipment",
+                                "Entertainment",
+                                "Photography"
+                              ],
+                              babyshower: [
+                                "Decoration",
+                                "Catering",
+                                "Gifts",
+                                "Photography",
+                                "Entertainment"
+                              ]
+                            };
+                          
+                            function updateSubcategories() {
+                              const mainCategory = document.getElementById('main-category').value;
+                              const subCategorySelect = document.getElementById('sub-category');
+                              const subCategoryGroup = document.getElementById('subcategory-group');
+                              
+                              // Clear previous options
+                              subCategorySelect.innerHTML = '<option value="">Select Sub Category</option>';
+                              
+                              if (mainCategory) {
+                                // Show subcategory group
+                                subCategoryGroup.style.display = 'block';
+                                
+                                // Add new options
+                                subcategories[mainCategory].forEach(subcat => {
+                                  const option = document.createElement('option');
+                                  option.value = subcat.toLowerCase().replace(/ /g, '-');
+                                  option.textContent = subcat;
+                                  subCategorySelect.appendChild(option);
+                                });
+                              } else {
+                                // Hide subcategory group if no main category selected
+                                subCategoryGroup.style.display = 'none';
+                              }
+                            }
+                          </script>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="business-desc">Business Description*</label>
+                    <textarea id="business-desc" name="business_desc" rows="3" required placeholder="Describe your business services, specialties, and experience"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tax-id">Tax ID/Registration Number*</label>
+                        <input type="text" id="tax-id" name="tax_id" required placeholder="Enter your business tax ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="years-operating">Years in Business</label>
+                        <input type="number" id="years-operating" name="years_operating" min="0" placeholder="0">
+                    </div>
+                </div>
+                
+                <h3 class="form-section-title">Contact Information</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="owner-name">Owner/Representative Name*</label>
+                        <input type="text" id="owner-name" name="owner_name" required placeholder="Full name of business owner">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" name="email" required placeholder="Your business email address">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number*</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Primary contact number">
+                    </div>
+                    <div class="form-group">
+                        <label for="alt-phone">Alternate Phone</label>
+                        <input type="tel" id="alt-phone" name="alt_phone" placeholder="Secondary contact number">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="business-address">Business Address*</label>
+                    <textarea id="business-address" name="business_address" rows="3" required placeholder="Full business address including street, building, etc."></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City*</label>
+                        <input type="text" id="city" name="city" required placeholder="City">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State/Region*</label>
+                        <input type="text" id="state" name="state" required placeholder="State or region">
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">ZIP/Postal Code*</label>
+                        <input type="text" id="zip" name="zip" required placeholder="Postal code">
+                    </div>
+                </div>
+                
+                <h3 class="form-section-title">Account Security</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password*</label>
+                        <input type="password" id="password" name="password" required placeholder="Create a strong password">
+                        <small>Minimum 8 characters with at least 1 number and 1 special character</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password*</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required placeholder="Re-enter your password">
+                    </div>
+                </div>
+                
+                <h3 class="form-section-title">Business Documents</h3>
+                
+                <div class="form-group">
+                    <label for="business-license">Business License Upload*</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="business-license" name="business_license" accept=".pdf,.jpg,.png" required>
+                        <label for="business-license" class="file-input-label">
+                            <i class="fas fa-upload"></i> Click to upload business license (PDF, JPG, PNG)
+                        </label>
+                    </div>
+                    <small>Maximum file size: 5MB</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="additional-docs">Additional Certifications (Optional)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="additional-docs" name="additional_docs[]" accept=".pdf,.jpg,.png" multiple>
+                        <label for="additional-docs" class="file-input-label">
+                            <i class="fas fa-upload"></i> Click to upload additional documents
+                        </label>
+                    </div>
+                    <small>Upload any relevant certifications or permits (multiple files allowed)</small>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="agreed_terms" required>
+                    <label for="terms">I certify that the information provided is accurate and agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>*</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="marketing" name="marketing_option">
+                    <label for="marketing">I would like to receive marketing communications and updates from Event Waver</label>
+                </div>
+                
+                <div class="form-group" style="margin-top: 30px;">
+                    <button type="submit" class="btn gold-btn" >
+                        <i class="fas fa-store-alt"></i> Complete Shopkeeper Registration
+                    </button>
+                </div>
+            </form>
+            <div class="form-footer">
+                <p>Already have an account? <a href="shopkeeper-login.html">Login here</a></p>
+                <p>Are you a customer? <a href="customer-register.html">Customer registration</a></p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Event Waver. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const registrationForm = document.getElementById('shopkeeper-register-form');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirm-password');
+            const businessLicenseInput = document.getElementById('business-license');
+            
+            // Password strength indicator
+            passwordInput.addEventListener('input', function() {
+                const password = passwordInput.value;
+                const strengthIndicator = document.createElement('div');
+                strengthIndicator.className = 'password-strength';
+                
+                // Remove previous indicator if exists
+                const existingIndicator = passwordInput.parentNode.querySelector('.password-strength');
+                if (existingIndicator) {
+                    existingIndicator.remove();
+                }
+                
+                if (password.length > 0) {
+                    let strength = 0;
+                    let messages = [];
+                    
+                    // Length check
+                    if (password.length >= 8) strength++;
+                    else messages.push('At least 8 characters');
+                    
+                    // Number check
+                    if (/\d/.test(password)) strength++;
+                    else messages.push('At least 1 number');
+                    
+                    // Special char check
+                    if (/[@$!%*#?&]/.test(password)) strength++;
+                    else messages.push('At least 1 special character (@$!%*#?&)');
+                    
+                    // Upper/lower case check
+                    if (/[A-Z]/.test(password) && /[a-z]/.test(password)) strength++;
+                    else messages.push('Both uppercase and lowercase letters');
+                    
+                    // Create strength meter
+                    strengthIndicator.innerHTML = `
+                        <div class="strength-meter">
+                            <div class="strength-bar" style="width: ${strength * 25}%; 
+                                background-color: ${strength < 2 ? '#ff4444' : strength < 4 ? '#ffbb33' : '#00C851'};">
+                            </div>
+                        </div>
+                        <small class="strength-message">${messages.length > 0 ? 'Missing: ' + messages.join(', ') : 'Strong password!'}</small>
+                    `;
+                    
+                    passwordInput.parentNode.appendChild(strengthIndicator);
+                }
+            });
+            
+            // File upload validation
+            businessLicenseInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const fileSizeMB = file.size / (1024 * 1024);
+                    const fileType = file.type;
+                    const validTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+                    
+                    if (fileSizeMB > 5) {
+                        alert('File size exceeds 5MB limit');
+                        this.value = '';
+                    } else if (!validTypes.includes(fileType)) {
+                        alert('Only PDF, JPG, or PNG files are allowed');
+                        this.value = '';
+                    }
+                }
+            });
+            
+            // Form submission handler
+            registrationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate required fields
+                const requiredFields = registrationForm.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.style.borderColor = '#ff4444';
+                        isValid = false;
+                    } else {
+                        field.style.borderColor = '#444';
+                    }
+                });
+                
+                if (!isValid) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                // Password validation
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    alert('Passwords do not match!');
+                    passwordInput.style.borderColor = '#ff4444';
+                    confirmPasswordInput.style.borderColor = '#ff4444';
+                    return;
+                }
+                
+                // Password strength validation
+                const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+                if (!passwordRegex.test(passwordInput.value)) {
+                    alert('Password must be at least 8 characters with at least 1 number and 1 special character (@$!%*#?&)');
+                    passwordInput.style.borderColor = '#ff4444';
+                    return;
+                }
+                
+                // Terms acceptance check
+                if (!document.getElementById('terms').checked) {
+                    alert('You must accept the Terms of Service to proceed');
+                    return;
+                }
+                
+                // Business license check
+                if (!businessLicenseInput.files || businessLicenseInput.files.length === 0) {
+                    alert('Please upload your business license');
+                    return;
+                }
+                
+                // If all validations pass, submit the form
+                registrationForm.submit(); // ye form ko actual mein submit karega
+
+            });
+            
+            // Function to handle form submission
+            // function submitRegistrationForm() {
+                // Show loading state
+                // const submitBtn = registrationForm.querySelector('button[type="submit"]');
+                // const originalBtnText = submitBtn.innerHTML;
+                // submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                // submitBtn.disabled = true;
+                
+                // Simulate form submission (replace with actual AJAX call)
+                // setTimeout(() => {
+                    // Here you would typically send data to your server
+                    // For demo purposes, we'll show a success message
+                    
+                    // Reset form
+                    // registrationForm.reset();
+                    
+                    // Show success message
+                    // alert('Registration submitted successfully! Your account will be reviewed and you\'ll receive a confirmation email shortly.');
+                    
+                    // Redirect to login page after 3 seconds
+                    // setTimeout(() => {
+                    //     window.location.href = 'shopkeeper-login.html';
+                    // }, 3000);
+                    
+                    // Restore button
+            //         submitBtn.innerHTML = originalBtnText;
+            //         submitBtn.disabled = false;
+            //     }, 2000);
+            // }
+            
+            // Add input event listeners to clear error styles when typing
+            const formInputs = registrationForm.querySelectorAll('input, textarea, select');
+            formInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    this.style.borderColor = '#444';
+                });
+            });
+        });
+    </script>
+     <!-- Bootstrap JS -->
+  
+     <script>
+        // Simple alert functions
+        function showShopkeeperAlert() {
+          alert("Please login as a shopkeeper to access this page.\nRedirecting to login page...");
+          window.location.href = "shopkeeper-login.html";
+        }
+      
+        function showCustomerAlert() {
+          alert("Please login as a customer to access this page.\nRedirecting to login page...");
+          window.location.href = "customer_login.html";
+        }
+      
+        // Set up event listeners when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+          // Shopkeeper link
+          const shopkeeperLink = document.querySelector('a[href="Shopkeeper_Dashboard.html"]');
+          if (shopkeeperLink) {
+            shopkeeperLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              showShopkeeperAlert();
+            });
+          }
+      
+          // My Order link
+          const orderLink = document.querySelector('a[href="order-tracking.html"]');
+          if (orderLink) {
+            orderLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              showCustomerAlert();
+            });
+          }
+
+          // Cart link (if you add it back)
+          const cartLink = document.querySelector('a[href="#"].nav-link:last-child');
+          if (cartLink) {
+            cartLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              showCustomerAlert();
+            });
+          }
+        });
+      </script>
+       
+</body>
+</html>

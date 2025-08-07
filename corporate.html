@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corporate Events Sub-Categories - Event Weaver</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #000; /* Black background */
+      color: #ffd700; /* Golden text */
+    }
+    .sub-category-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: #1a1a1a; /* Dark gray background for cards */
+    }
+    .sub-category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3); /* Golden shadow */
+    }
+    .sub-category-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .sub-category-card .card-body {
+      background: linear-gradient(45deg, #1a1a1a, #000); /* Dark gradient */
+      color: #ffd700; /* Golden text */
+      text-align: center;
+    }
+    .sub-category-card .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .btn-light {
+      background-color: #ffd700; /* Golden button */
+      color: #000; /* Black text */
+      border: none;
+    }
+    .btn-light:hover {
+      background-color: #e6b800; /* Darker golden on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Event Weaver</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sub-Category Content -->
+  <div class="container my-5">
+    <h1 class="text-center mb-5">Corporate Events Sub-Categories</h1>
+    <div class="row g-4">
+      <!-- Conferences -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/conference.avif" class="card-img-top" alt="Conferences">
+          <div class="card-body">
+            <h5 class="card-title">Conferences</h5>
+            <p class="card-text">Organize professional conferences with our expert services.</p>
+            <a href="conferences.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Seminars -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/seminar.avif" class="card-img-top" alt="Seminars">
+          <div class="card-body">
+            <h5 class="card-title">Seminars</h5>
+            <p class="card-text">Host impactful seminars with our comprehensive event solutions.</p>
+            <a href="seminars.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Product Launches -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/product_launch.avif" class="card-img-top" alt="Product Launches">
+          <div class="card-body">
+            <h5 class="card-title">Product Launches</h5>
+            <p class="card-text">Make your product launch a grand success with our services.</p>
+            <a href="product_launches.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Team Building -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/team_building.avif" class="card-img-top" alt="Team Building">
+          <div class="card-body">
+            <h5 class="card-title">Team Building</h5>
+            <p class="card-text">Enhance team spirit with our team-building event packages.</p>
+            <a href="team_building.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Corporate Parties -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/corporate_party.avif" class="card-img-top" alt="Corporate Parties">
+          <div class="card-body">
+            <h5 class="card-title">Corporate Parties</h5>
+            <p class="card-text">Celebrate your company's success with our party planning services.</p>
+            <a href="corporate_parties.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+      <!-- Networking Events -->
+      <div class="col-md-4">
+        <div class="sub-category-card card">
+          <img src="images/networking_event.avif" class="card-img-top" alt="Networking Events">
+          <div class="card-body">
+            <h5 class="card-title">Networking Events</h5>
+            <p class="card-text">Facilitate meaningful connections with our networking event services.</p>
+            <a href="networking_events.html" class="btn btn-light">Explore</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 Event Weaver. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baby Shower Themes - Event Weaver</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #000; /* Black background */
+      color: #ffd700; /* Golden text */
+    }
+    .product-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: #1a1a1a; /* Dark gray background for cards */
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3); /* Golden shadow */
+    }
+    .product-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .product-card .card-body {
+      background: linear-gradient(45deg, #1a1a1a, #000); /* Dark gradient */
+      color: #ffd700; /* Golden text */
+      text-align: center;
+    }
+    .product-card .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .btn-light {
+      background-color: #ffd700; /* Golden button */
+      color: #000; /* Black text */
+      border: none;
+    }
+    .btn-light:hover {
+      background-color: #e6b800; /* Darker golden on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Event Weaver</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Products Content -->
+  <div class="container my-5">
+    <h1 class="text-center mb-5">Baby Shower Themes</h1>
+    <div class="row g-4">
+      <!-- Jungle Safari -->
+      <div class="col-md-4">
+        <div class="product-card card">
+          <img src="images/jungle_safari.jpg" class="card-img-top" alt="Jungle Safari">
+          <div class="card-body">
+            <h5 class="card-title">Jungle Safari</h5>
+            <p class="card-text">A wild and adventurous theme with animal prints and greenery.</p>
+            <p class="card-text"><strong>Starting at $200</strong></p>
+            <a href="cart.html" class="btn btn-light">Order Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Princess Theme -->
+      <div class="col-md-4">
+        <div class="product-card card">
+          <img src="images/princess_theme.jpg" class="card-img-top" alt="Princess Theme">
+          <div class="card-body">
+            <h5 class="card-title">Princess Theme</h5>
+            <p class="card-text">A royal celebration with tiaras, castles, and pastel colors.</p>
+            <p class="card-text"><strong>Starting at $250</strong></p>
+            <a href="cart.html" class="btn btn-light">Order Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Nautical Theme -->
+      <div class="col-md-4">
+        <div class="product-card card">
+          <img src="images/nautical_theme.jpg" class="card-img-top" alt="Nautical Theme">
+          <div class="card-body">
+            <h5 class="card-title">Nautical Theme</h5>
+            <p class="card-text">A sailor-inspired theme with anchors, boats, and navy blue.</p>
+            <p class="card-text"><strong>Starting at $180</strong></p>
+            <a href="cart.html" class="btn btn-light">Order Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Woodland Creatures -->
+      <div class="col-md-4">
+        <div class="product-card card">
+          <img src="images/woodland_creatures.jpg" class="card-img-top" alt="Woodland Creatures">
+          <div class="card-body">
+            <h5 class="card-title">Woodland Creatures</h5>
+            <p class="card-text">A nature-inspired theme with foxes, deer, and mushrooms.</p>
+            <p class="card-text"><strong>Starting at $220</strong></p>
+            <a href="cart.html" class="btn btn-light">Order Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Space Adventure -->
+      <div class="col-md-4">
+        <div class="product-card card">
+          <img src="images/space_adventure.jpg" class="card-img-top" alt="Space Adventure">
+          <div class="card-body">
+            <h5 class="card-title">Space Adventure</h5>
+            <p class="card-text">A cosmic theme with stars, planets, and rockets.</p>
+            <p class="card-text"><strong>Starting at $210</strong></p>
+            <a href="cart.html" class="btn btn-light">Order Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 Event Weaver. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Add the Cart Script Here -->
+  <script>
+    // Function to add product to cart
+    function addToCart(productName, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let product = { name: productName, price: price };
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${productName} added to cart!`);
+    }
+
+    // Function to display cart items and calculate total
+    function displayCart() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let cartItems = document.getElementById('cart-items');
+      let totalItems = document.getElementById('total-items');
+      let totalAmount = document.getElementById('total-amount');
+      let total = 0;
+
+      cartItems.innerHTML = '';
+      cart.forEach((item, index) => {
+        let li = document.createElement('li');
+        li.textContent = `${item.name} - $${item.price}`;
+        cartItems.appendChild(li);
+        total += item.price;
+      });
+
+      totalItems.textContent = cart.length;
+      totalAmount.textContent = total.toFixed(2);
+    }
+
+    // Function to clear cart
+    function clearCart() {
+      localStorage.removeItem('cart');
+      displayCart();
+    }
+
+    // Display cart when the page loads
+    window.onload = displayCart;
+  </script>
+</body>
+</html>
